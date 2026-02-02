@@ -1,3 +1,5 @@
+import "./style/index.css"
+
 const App = () => {
 
   return (
