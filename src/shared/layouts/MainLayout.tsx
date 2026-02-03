@@ -1,7 +1,12 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
-const MainLayout : FC = () => {
-    return null
+interface MainLayoutProps {
+    children: ReactNode;
+    className?: string;
 }
 
-export default MainLayout
+const MainLayout: FC<MainLayoutProps> = ({ children, className }) => {
+    return <main className={className}>{children}</main>;
+};
+
+export default MainLayout;

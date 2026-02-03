@@ -1,11 +1,12 @@
+import { DefaultPage } from "@/page"
 import "./style/index.css"
 
 const App = () => {
 
   return (
-    <h1>
-      привет мир
-    </h1>
+      <div className="app">
+        <DefaultPage/>
+      </div>
   )
 }
 

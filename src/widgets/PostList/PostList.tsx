@@ -11,7 +11,7 @@ const PostList : FC<IPostListProps> = ({posts}) => {
     return (
         <ul className={style.list}>
         {posts.map(post => (
-            <li className={style.item}><PostCard key={post.id} {...post}/></li>
+            <li key={post.id} className={style.item}><PostCard {...post}/></li>
         ))}
         </ul>
     )
