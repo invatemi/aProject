@@ -10,10 +10,16 @@
   align-items: center;
   z-index: 1000;
   animation: fadeIn 0.2s ease;
+  transition: background-color 0.3s ease;
+}
+
+.overlay--dark {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal {
   background: white;
+  color: #333;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   max-width: 90vw;
@@ -22,6 +28,16 @@
   display: flex;
   flex-direction: column;
   animation: slideIn 0.2s ease;
+  transition: 
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.modal--dark {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .header {
@@ -30,17 +46,41 @@
   align-items: center;
   padding: 16px 20px;
   border-bottom: 1px solid #eee;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.header--dark {
+  border-bottom-color: #333;
 }
 
 .title {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #333;
+  color: inherit;
+  transition: color 0.3s ease;
 }
 
 .content {
   padding: 20px;
   overflow-y: auto;
   max-height: 70vh;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
 }

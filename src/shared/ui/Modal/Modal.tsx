@@ -8,14 +8,16 @@ interface IModalProps {
     children: ReactNode;
     title?: string;
     showCloseButton?: boolean;
+    theme?: "light" | "dark";
 }
 
-const Modal: FC<IModalProps> = ({
-    isOpen,
-    onClose,
-    children,
-    title,
+const Modal: FC<IModalProps> = ({ 
+    isOpen, 
+    onClose, 
+    children, 
+    title, 
     showCloseButton = true,
+    theme = "light"
 }) => {
     useEffect(() => {
         if (!isOpen) return;
@@ -34,11 +36,15 @@ const Modal: FC<IModalProps> = ({
         if (e.target === e.currentTarget) onClose();
     };
 
+    const overlayClass = `${style.overlay} ${theme === "dark" ? style["overlay--dark"] : ""}`;
+    const modalClass = `${style.modal} ${theme === "dark" ? style["modal--dark"] : ""}`;
+    const headerClass = `${style.header} ${theme === "dark" ? style["header--dark"] : ""}`;
+
     return (
-        <div className={style.overlay} onClick={handleOverlayClick}>
-            <div className={style.modal} role="dialog" aria-modal="true">
+        <div className={overlayClass} onClick={handleOverlayClick}>
+            <div className={modalClass} role="dialog" aria-modal="true">
                 {(title || showCloseButton) && (
-                    <div className={style.header}>
+                    <div className={headerClass}>
                         {title && <h2 className={style.title}>{title}</h2>}
                         {showCloseButton && (
                             <Button

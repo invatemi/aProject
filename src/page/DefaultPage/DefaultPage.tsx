@@ -1,47 +1,34 @@
 import { FC } from "react";
 import { Header, Footer } from "@/widgets";
 import { MainLayout } from "@/shared";
-import {PostList} from "@/widgets"
+import { PostList } from "@/widgets";
+import { useTheme } from "@/shared";
+import style from "./DefaultPage.module.css";
 
-const DefaultPage : FC = () => {
-    // пока что мок данные
-    // userId: string;
-    // id: number;
-    // title: string;
-    // body: string;
+const DefaultPage: FC = () => {
+  const { theme } = useTheme();
 
-    const post = [
-        {
-            userId: 'tomi',
-            id: 1,
-            title: 'Привет мир',
-            body: ' Привет мир Привет мир',
-        },
-        {
-            userId: 'toti',
-            id: 2,
-            title: 'Привет мир',
-            body: ' Привет мир Привет мир',
-        },
-        {
-            userId: 'tito',
-            id: 3,
-            title: 'Привет мир',
-            body: ' Привет мир Привет мир',
-        },
-    ]
+  const layoutClass = theme === "dark" 
+    ? style.mainDark 
+    : style.mainLight;
 
-    return (
-        <>
-        <Header/>
-        <MainLayout>
-            <div className="container">
-                <PostList posts={post}/>
-            </div>
-        </MainLayout>
-        <Footer/>
-        </>
-    )
-}
+  const posts = [
+    { userId: 'tomi', id: 1, title: 'Привет мир', body: 'Привет мир Привет мир' },
+    { userId: 'toti', id: 2, title: 'Привет мир', body: 'Привет мир Привет мир' },
+    { userId: 'tito', id: 3, title: 'Привет мир', body: 'Привет мир Привет мир' },
+  ];
 
-export default DefaultPage
+  return (
+    <>
+      <Header theme={theme} />
+      <MainLayout className={layoutClass}>
+        <div className="container">
+          <PostList theme={theme} posts={posts} />
+        </div>
+      </MainLayout>
+      <Footer theme={theme} />
+    </>
+  );
+};
+
+export default DefaultPage;

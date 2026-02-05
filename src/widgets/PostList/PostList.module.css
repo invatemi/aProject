@@ -5,6 +5,13 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.list--dark {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
 }
 
 .item {

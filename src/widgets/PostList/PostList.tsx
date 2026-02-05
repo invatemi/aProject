@@ -1,20 +1,25 @@
 import { FC } from "react";
 import { PostCard } from "@/entities";
 import { IPostCardProps } from "@/entities/post/lib";
-import style from "./PostList.module.css"
+import style from "./PostList.module.css";
 
 interface IPostListProps {
-  posts: IPostCardProps[];
+    theme: "light" | "dark";
+    posts: IPostCardProps[];
 }
 
-const PostList : FC<IPostListProps> = ({posts}) => {
+const PostList: FC<IPostListProps> = ({ theme, posts }) => {
+    const listClass = `${style.list} ${theme === "dark" ? style["list--dark"] : ""}`;
+
     return (
-        <ul className={style.list}>
-        {posts.map(post => (
-            <li key={post.id} className={style.item}><PostCard {...post}/></li>
-        ))}
+        <ul className={listClass}>
+            {posts.map(post => (
+                <li key={post.id} className={style.item}>
+                    <PostCard {...post} theme={theme} />
+                </li>
+            ))}
         </ul>
-    )
-}
+    );
+};
 
-export default PostList
+export default PostList;

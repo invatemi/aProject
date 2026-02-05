@@ -4,12 +4,18 @@ import { Modal, Button } from "@/shared";
 import { ThemeSwitcher } from "@/features";
 import style from "./Header.module.css";
 
-const Header: FC = () => {
+interface IHeaderProps {
+  theme?: "light" | "dark";
+}
+
+const Header: FC<IHeaderProps> = ({ theme = "light" }) => {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const headerClass = `${style.header} ${theme === "dark" ? style["header--dark"] : ""}`;
 
   return (
     <>
-      <header className={style.header}>
+      <header className={headerClass}>
         <div className="container">
           <div className={style.wrapper}>
             <Button onClick={() => setIsModalOpen(true)}>
@@ -28,6 +34,7 @@ const Header: FC = () => {
             onClose={() => setIsModalOpen(false)}
             title="Привет!"
             showCloseButton={true}
+            theme={theme}
           >
             <p>что то в модалке</p>
             <Button variant="primary" onClick={() => setIsModalOpen(false)}>

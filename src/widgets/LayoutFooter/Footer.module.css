@@ -4,6 +4,16 @@
   padding: 24px 0;
   border-top: 1px solid #e9ecef;
   margin-top: auto;
+  transition: 
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-top-color 0.3s ease;
+}
+
+.footer--dark {
+  background-color: #1a1a1a;
+  color: #adb5bd;
+  border-top-color: #333;
 }
 
 .wrapper {
@@ -19,4 +29,9 @@
   margin: 0;
   text-align: center;
   line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.footer--dark .footerTxt {
+  color: #e0e0e0;
 }
