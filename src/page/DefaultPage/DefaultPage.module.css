@@ -1,0 +1,18 @@
+.main {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLight {
+  composes: main;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.mainDark {
+  composes: main;
+  background-color: #121212;
+  color: #e0e0e0;
+}
