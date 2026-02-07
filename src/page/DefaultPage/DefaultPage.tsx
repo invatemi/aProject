@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { Header, Footer } from "@/widgets";
-import { MainLayout } from "@/shared";
+import { MainLayout, useTheme, WithLoadingProps, withLoading } from "@/shared";
 import { PostList } from "@/widgets";
-import { useTheme } from "@/shared";
 import style from "./DefaultPage.module.css";
 
 const DefaultPage: FC = () => {

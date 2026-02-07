@@ -27,22 +27,29 @@ const Header: FC<IHeaderProps> = ({ theme = "light" }) => {
         </div>
       </header>
 
-      {typeof document !== "undefined" &&
-        createPortal(
-          <Modal
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-            title="Привет!"
-            showCloseButton={true}
-            theme={theme}
-          >
+    {typeof document !== "undefined" &&
+      createPortal(
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          theme={theme}
+        >
+          <Modal.Header onClose={() => setIsModalOpen(false)} showCloseButton>
+            Привет!
+          </Modal.Header>
+          
+          <Modal.Content>
             <p>что то в модалке</p>
+          </Modal.Content>
+          
+          <Modal.Footer>
             <Button variant="primary" onClick={() => setIsModalOpen(false)}>
               Закрыть
             </Button>
-          </Modal>,
-          document.getElementById("modal-root")!
-        )}
+          </Modal.Footer>
+        </Modal>,
+        document.getElementById("modal-root")!
+      )}
     </>
   );
 };
