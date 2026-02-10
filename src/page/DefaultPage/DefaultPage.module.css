@@ -1,0 +1,46 @@
+.main {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLight {
+  composes: main;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.mainDark {
+  composes: main;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/*  */
+
+.commentsSection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.commentsTitle {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.loading, .noComments {
+  text-align: center;
+  color: #666;
+  padding: 1rem;
+}
+
+.mainDark .commentsSection {
+  border-top-color: #444;
+}
+
+.mainDark .loading, 
+.mainDark .noComments {
+  color: #aaa;
+}

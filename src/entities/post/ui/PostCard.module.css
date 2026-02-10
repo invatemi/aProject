@@ -1,0 +1,50 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+.card--dark {
+  background-color: #1e1e1e;
+  border-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.card p {
+  margin: 0 0 12px 0;
+  color: #555;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.card small {
+  color: #888;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.card--dark h3 {
+  color: #e6e6e6;
+}
+
+.card--dark p {
+  color: #c5c5c5;
+}
+
+.card--dark small {
+  color: #a0a0a0;
+}
