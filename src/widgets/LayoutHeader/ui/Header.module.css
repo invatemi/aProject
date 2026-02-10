@@ -15,9 +15,18 @@
 
 .wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
+}
+
+.wrapperBlock{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 24px;
 }
 
 .headerTxt {

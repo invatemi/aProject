@@ -6,15 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build
-dist/
-build/
+dist
+build
 *.log
-
-# Env
-.env
-.env.local
-
-# IDE
-.vscode/
-.idea/
-.DS_Store

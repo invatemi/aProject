@@ -1,2 +1,1 @@
-export {default as withLoading} from "./withLoading"
-export type * from "./withLoading"
+export {default as WithLoading} from "./WithLoading"

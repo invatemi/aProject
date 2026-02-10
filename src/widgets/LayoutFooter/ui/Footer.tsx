@@ -1,9 +1,6 @@
 import { FC } from "react";
+import { IFooterProps } from "../lib";
 import style from "./Footer.module.css";
-
-interface IFooterProps {
-  theme?: "light" | "dark";
-}
 
 const Footer: FC<IFooterProps> = ({ theme = "light" }) => {
   const footerClass = `${style.footer} ${theme === "dark" ? style["footer--dark"] : ""}`;

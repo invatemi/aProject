@@ -1,13 +1,12 @@
-import { DefaultPage } from "@/page"
-import "./style/index.css"
+import { AppRouter } from "@/app/provider";
+import "./style/index.css";
 
 const App = () => {
-
   return (
-      <div className="app">
-        <DefaultPage/>
-      </div>
-  )
-}
+    <div className="app">
+      <AppRouter />
+    </div>
+  );
+};
 
-export default App
+export default App;
