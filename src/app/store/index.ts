@@ -1,11 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
-import postsReducer from './posts/postsSlice';
-import commentsReducer from './comments/commentsSlice';
+
+import {
+  postsReducer, 
+  commentsReducer, 
+  usersReducer, 
+  albumsReducer, 
+  photosReducer, 
+  todosReducer } from './reducers';
 
 export const store = configureStore({
   reducer: {
     posts: postsReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    users: usersReducer,
+    albums: albumsReducer,
+    photos: photosReducer,
+    todos: todosReducer
   },
   devTools: process.env.NODE_ENV !== 'production'
 });

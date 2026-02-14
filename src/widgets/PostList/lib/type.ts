@@ -4,6 +4,4 @@ export interface IPostListProps {
     theme: "light" | "dark";
     posts: IPostCardProps[];
     onPostClick?: (postId: number) => void;
-    selectedPostId?: number;
-    commentsByPostId: Record<number, Comment[]>
 }
