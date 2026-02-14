@@ -1,13 +1,14 @@
 import { FC } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useTheme, Button } from "@/shared";
 import style from "./ErrorPage.module.css";
 
 const ErrorPage: FC = () => {
+
   const navigate = useNavigate();
   const { theme } = useTheme();
   
-  const containerClass = theme === 'dark' 
+  const containerClass = theme === "dark" 
     ? `${style.container} ${style.dark}`
     : style.container;
 
@@ -23,7 +24,7 @@ const ErrorPage: FC = () => {
           variant="primary" 
           size="md" 
           fullWidth
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
         >
           Вернуться на главную
         </Button>

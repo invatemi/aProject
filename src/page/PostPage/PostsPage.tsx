@@ -1,23 +1,22 @@
 import { FC } from "react";
-import { PostLengthFilter } from "@/features";
+import { PostLengthFilter, usePostNavigation, useSortPost } from "@/features";
 import { PostList, Header, Footer } from "@/widgets";
 import { MainLayout, useTheme, WithLoading } from "@/shared";
 import { selectIsAnyLoading } from "@/app/store/selectors";
-import { useDefaultPageLogic } from "@/features/default-page";
-import style from "./DefaultPage.module.css";
+import style from "./PostPage.module.css";
 
-const DefaultPageContent: FC = () => {
+const PostPageContent: FC = () => {
+
   const { theme } = useTheme();
   const {
     posts,
     postsError,
     sortedPosts,
-    selectedPostId,
-    handlePostClick,
     handleSort,
     sortOrder,
-    commentsByPostId
-  } = useDefaultPageLogic();
+  } = useSortPost();
+  
+  const { handlePostClick } = usePostNavigation();
 
   const layoutClass = theme === "dark" ? style.mainDark : style.mainLight;
   const errorClass = theme === "dark" ? style.errorDark : style.errorLight;
@@ -27,10 +26,13 @@ const DefaultPageContent: FC = () => {
       <Header theme={theme} />
       <MainLayout className={layoutClass}>
         <div className="container">
-          <PostLengthFilter currentOrder={sortOrder} onSort={handleSort} />
+          <div className={style.headerSection}>
+            <h1 className={style.pageTitle}>Список постов</h1>
+            <PostLengthFilter currentOrder={sortOrder} onSort={handleSort} />
+          </div>
           
           {postsError && (
-            <div className={errorClass}>
+            <div className={errorClass} role="alert">
               <span>Ошибка загрузки: {postsError}</span>
             </div>
           )}
@@ -40,9 +42,13 @@ const DefaultPageContent: FC = () => {
               theme={theme} 
               posts={sortedPosts} 
               onPostClick={handlePostClick}
-              selectedPostId={selectedPostId ?? undefined}
-              commentsByPostId={commentsByPostId as any}
             />
+          )}
+          
+          {posts.length === 0 && !postsError && (
+            <div className={theme === "dark" ? style.emptyDark : style.emptyLight}>
+              <p>Посты не найдены</p>
+            </div>
           )}
         </div>
       </MainLayout>
@@ -51,10 +57,10 @@ const DefaultPageContent: FC = () => {
   );
 };
 
-const DefaultPage = () => (
+const PostPage = () => (
   <WithLoading loadingSelector={selectIsAnyLoading}>
-    <DefaultPageContent />
+    <PostPageContent />
   </WithLoading>
 );
 
-export default DefaultPage;
+export default PostPage;

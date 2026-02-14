@@ -1,0 +1,136 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.container :global(.mainDark) .header {
+  border-bottom-color: #3a3a3a;
+}
+
+.title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  margin: 0;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title::before {
+  content: '📝';
+  font-size: 1.4rem;
+}
+
+.count {
+  background: rgba(74, 144, 226, 0.1);
+  color: #3b82f6;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.container :global(.mainDark) .count {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.countNumber {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.error {
+  background: linear-gradient(145deg, #fff5f5, #ffebee);
+  border-left: 4px solid #ef5350;
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(239, 83, 80, 0.15);
+}
+
+.errorLight {
+  composes: error;
+}
+
+.errorDark {
+  composes: error;
+  background: linear-gradient(145deg, #2c1a1a, #3a1a1a);
+  border-left-color: #f44336;
+  color: #ffcdd2;
+  box-shadow: 0 2px 6px rgba(244, 67, 54, 0.25);
+}
+
+.errorIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.emptyBase {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.emptyIcon {
+  font-size: 3.5rem;
+  opacity: 0.25;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.emptyText {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.emptySubtext {
+  font-size: 0.95rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.emptyLight {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  color: #495057;
+  border: 1px dashed #ced4da;
+}
+
+.emptyDark {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #1e1e1e, #171717);
+  color: #cbd5e1;
+  border: 1px dashed #3a3a3a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.emptyLight .emptyText,
+.emptyLight .emptySubtext {
+  color: #495057;
+}
+
+.emptyDark .emptyText,
+.emptyDark .emptySubtext {
+  color: #a0aec0;
+}
