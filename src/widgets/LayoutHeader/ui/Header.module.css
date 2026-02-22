@@ -1,0 +1,43 @@
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header--dark {
+  background-color: #1a1a1a;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.wrapperBlock{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 24px;
+}
+
+.headerTxt {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.header--dark .headerTxt {
+  color: #e0e0e0;
+}
