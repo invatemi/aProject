@@ -16,7 +16,7 @@ const Header: FC<IHeaderProps> = ({ theme = "light" }) => {
       <header className={headerClass}>
         <div className="container">
           <div className={style.wrapper}>
-            <p className={style.headerTxt}>Тут типо логотип Header</p>
+            <p className={style.headerTxt}>Логотип приложения !</p>
 
             <Navigation />
             

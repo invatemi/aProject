@@ -1,49 +1,35 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchPostById, fetchComments } from '@/app/store/reducers';
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-
+import { useGetPostByIdQuery } from '@/entities/post/api';
+import { useGetCommentsByPostIdQuery } from '@/entities/comments/api';
 
 export const usePostDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useAppDispatch();
-  
   const postId = Number(id);
   const isValidId = !isNaN(postId) && postId > 0;
 
-  const { currentPost, currentPostStatus, currentPostError } = useAppSelector(
-    (state) => state.posts
-  );
+  const {
+    data: post,
+    isLoading: postLoading,
+    error: postError,
+  } = useGetPostByIdQuery(postId, { skip: !isValidId });
 
-  const commentsState = useAppSelector((state) => state.comments);
-  const comments = commentsState.byPostId[postId] || [];
-  const commentsStatus = commentsState.status[postId] || 'idle';
-  const commentsError = commentsState.error[postId] || null;
-
-  useEffect(() => {
-    if (isValidId) {
-      dispatch(fetchPostById(postId));
-      dispatch(fetchComments(postId));
-    }
-    return () => {
-      dispatch({ type: 'posts/clearCurrentPost' });
-    };
-  }, [postId, isValidId, dispatch]);
+  const {
+    data: comments = [],
+    isLoading: commentsLoading,
+    error: commentsError,
+  } = useGetCommentsByPostIdQuery(postId, { skip: !isValidId });
 
   return {
-    post: currentPost,
-    postStatus: currentPostStatus,
-    postError: currentPostError,
+    post,
+    postStatus: postLoading ? 'loading' : (post ? 'succeeded' : 'idle'),
+    postError: postError ? (postError as any).message : null,
     comments,
-    commentsStatus,
-    commentsError,
+    commentsStatus: commentsLoading ? 'loading' : (comments.length ? 'succeeded' : 'idle'),
+    commentsError: commentsError ? (commentsError as any).message : null,
     postId,
     isValidId,
-    isLoading: currentPostStatus === 'loading' || commentsStatus === 'loading',
-    hasError: !!currentPostError || !!commentsError,
-    isEmpty: 
-      currentPostStatus === 'succeeded' && 
-      currentPost === null &&
-      !currentPostError
+    isLoading: postLoading || commentsLoading,
+    hasError: !!postError || !!commentsError,
+    isEmpty: !post && !postLoading && !postError,
   };
 };

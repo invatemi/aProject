@@ -1,34 +1,20 @@
-import { useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchAlbumPhotos } from '@/app/store/reducers';
-import { RootState, AppDispatch } from '@/app/store';
+import { useGetPhotosByAlbumIdQuery } from '@/entities/photo/api';
 
 export const useAlbumPhotos = () => {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch<AppDispatch>();
-  
-  const albumId = useMemo(() => {
-    const num = Number(id);
-    return isNaN(num) ? null : num;
-  }, [id]);
+  const albumId = Number(id);
+  const isValid = !isNaN(albumId) && albumId > 0;
 
-  const { items: photos, status, error } = useSelector(
-    (state: RootState) => state.photos
-  );
-
-  useEffect(() => {
-    if (albumId !== null) {
-      dispatch(fetchAlbumPhotos(albumId));
-    }
-  }, [albumId, dispatch]);
+  const { data: photos = [], isLoading, error } = useGetPhotosByAlbumIdQuery(albumId, {
+    skip: !isValid,
+  });
 
   return {
     photos,
-    status,
-    error,
-    albumId,
-    isLoading: status === 'loading',
-    isEmpty: photos.length === 0 && status === 'succeeded'
+    isLoading,
+    error: error ? (error as any).message || 'Ошибка загрузки' : null,
+    albumId: isValid ? albumId : null,
+    isEmpty: photos.length === 0 && !isLoading && !error,
   };
 };

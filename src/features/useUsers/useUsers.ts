@@ -1,21 +1,12 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { fetchUsers } from '@/app/store/reducers';
+import { useGetUsersQuery } from '@/entities/user/api';
 
 export const useUsers = () => {
-  const dispatch = useAppDispatch();
-  const { items: users, status, error } = useAppSelector((state) => state.users);
-
-  useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchUsers());
-    }
-  }, [dispatch, status]);
+  const { data: users = [], isLoading, error } = useGetUsersQuery();
 
   return {
     users,
-    isLoading: status === 'loading',
-    error,
-    isEmpty: users.length === 0 && status === 'succeeded'
+    isLoading,
+    error: error ? (error as any).message || null : null,
+    isEmpty: users.length === 0 && !isLoading && !error,
   };
 };

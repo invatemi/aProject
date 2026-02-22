@@ -1,17 +1,10 @@
-import type { RootState } from '@/app/store';
+import { createSelector } from '@reduxjs/toolkit';
+import { RootState } from '../../store';
 
-export const selectIsAnyLoading = (state: RootState): boolean => {
-  if (
-    state.posts.status === 'loading' ||
-    state.posts.currentPostStatus === 'loading' ||
-    state.users.status === 'loading' ||
-    state.albums.status === 'loading' ||
-    state.photos.status === 'loading' ||
-    state.todos.status === 'loading'
-  ) {
-    return true;
+export const selectIsAnyLoading = createSelector(
+  (state: RootState) => state.posts.status,
+  (state: RootState) => state.users.status,
+  (postsStatus, usersStatus) => {
+    return postsStatus === 'loading' || usersStatus === 'loading';
   }
-
-  const commentsStatus = state.comments.status || {};
-  return Object.values(commentsStatus).some(status => status === 'loading');
-};
+);

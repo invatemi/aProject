@@ -1,21 +1,12 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { fetchAlbums } from '@/app/store/reducers';
+import { useGetAlbumsQuery } from '@/entities/album/api';
 
 export const useAlbums = () => {
-  const dispatch = useAppDispatch();
-  const { items: albums, status, error } = useAppSelector((state) => state.albums);
-
-  useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchAlbums());
-    }
-  }, [dispatch, status]);
+  const { data: albums = [], isLoading, error } = useGetAlbumsQuery();
 
   return {
     albums,
-    isLoading: status === 'loading',
-    error: error || null,
-    isEmpty: albums.length === 0 && status === 'succeeded'
+    isLoading,
+    error: error ? (error as any).message || null : null,
+    isEmpty: albums.length === 0 && !isLoading && !error,
   };
 };
