@@ -1,0 +1,81 @@
+.container {
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.containerDark {
+  composes: container;
+  background: linear-gradient(145deg, #1e1e1e, #171717);
+  border-bottom-color: #3a3a3a;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.tabsList {
+  list-style: none;
+  display: flex;
+  padding: 0 24px;
+  margin: 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+}
+
+.tabItem {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.tabLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #4a5568;
+  position: relative;
+  transition: all 0.25s ease;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+
+.tabLinkDark {
+  composes: tabLink;
+  color: #a0aec0;
+}
+
+.tabLink:hover {
+  color: #2b6cb0;
+  background: rgba(74, 144, 226, 0.05);
+}
+
+.tabLinkDark:hover {
+  color: #6c5ce7;
+  background: rgba(108, 92, 231, 0.1);
+}
+
+.tabLink.active {
+  color: #2b6cb0;
+  border-bottom-color: #4a90e2;
+}
+
+.tabLinkDark.active {
+  color: #6c5ce7;
+  border-bottom-color: #8b5cf6;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+  border-radius: 2px 2px 0 0;
+  animation: slideIn 0.3s ease-out;
+}

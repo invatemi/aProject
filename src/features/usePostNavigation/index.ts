@@ -1,0 +1,1 @@
+export {usePostNavigation} from "./usePostNavigation"
