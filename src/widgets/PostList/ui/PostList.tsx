@@ -1,25 +1,22 @@
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import { PostCard } from "@/entities";
+import { ItemList } from "@/shared/ui/ItemList";
 import { IPostListProps } from "../lib";
-import style from "./PostList.module.css";
 
 const PostList = memo(({ theme, posts, onPostClick }: IPostListProps) => {
-  const listClass = theme === "dark" ? style.listDark : style.listLight;
-
-  const renderedPosts = useMemo(() => 
-    posts.map(post => (
-      <li key={post.id} className={style.item}>
+  return (
+    <ItemList
+      items={posts}
+      theme={theme}
+      renderItem={(post) => (
         <PostCard 
           {...post} 
           theme={theme}
           onClick={onPostClick}
         />
-      </li>
-    )),
-    [posts, theme, onPostClick]
+      )}
+    />
   );
-
-  return <ul className={listClass}>{renderedPosts}</ul>;
 });
 
 export default PostList;
