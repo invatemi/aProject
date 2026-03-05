@@ -1,0 +1,96 @@
+.main {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLight {
+  composes: main;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.mainDark {
+  composes: main;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: inherit;
+}
+
+.errorIcon {
+  font-size: 1.4rem;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+.emptyBase {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  opacity: 0.25;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.emptyLight {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  color: #495057;
+  border: 1px dashed #ced4da;
+}
+
+.emptyDark {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #1e1e1e, #171717);
+  color: #cbd5e1;
+  border: 1px dashed #3a3a3a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.commentsSection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.commentsTitle {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.loading, .noComments {
+  text-align: center;
+  color: #666;
+  padding: 1rem;
+}
+
+.mainDark .commentsSection {
+  border-top-color: #444;
+}
+
+.mainDark .loading, 
+.mainDark .noComments {
+  color: #aaa;
+}

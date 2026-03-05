@@ -1,0 +1,50 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.listLight {
+  composes: list;
+}
+
+.listDark {
+  composes: list;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentsContainer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.listDark .commentsContainer {
+  border-top-color: #333;
+}
+
+.noCommentsBase {
+  text-align: center;
+  padding: 1.25rem;
+  font-style: italic;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.noCommentsLight {
+  composes: noCommentsBase;
+  color: #666;
+}
+
+.noCommentsDark {
+  composes: noCommentsBase;
+  color: #aaa;
+}

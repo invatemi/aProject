@@ -1,0 +1,85 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.listLight {
+  composes: list;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.listDark {
+  composes: list;
+  background: #1a1a2e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.item {
+  display: block;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.item[role="button"] {
+  cursor: pointer;
+}
+
+.item[role="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.item[role="button"]:focus {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+.emptyBase {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  grid-column: 1 / -1;
+}
+
+.emptyIcon {
+  font-size: 3.5rem;
+  opacity: 0.3;
+}
+
+.emptyLight {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  color: #6c757d;
+  border-radius: 16px;
+}
+
+.emptyDark {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #1e1e1e, #171717);
+  color: #a0aec0;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.emptyLight p {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #495057;
+}
+
+.emptyDark p {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #cbd5e1;
+}

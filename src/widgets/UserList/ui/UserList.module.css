@@ -1,0 +1,141 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.listDark .header {
+  border-bottom-color: #3a3a3a;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title::before {
+  content: '👥';
+  font-size: 1.8rem;
+}
+
+.listDark .title {
+  color: #f1f5f9;
+}
+
+.count {
+  background: rgba(74, 144, 226, 0.1);
+  color: #3b82f6;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 1.05rem;
+}
+
+.listDark .count {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.countNumber {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.listLight {
+  composes: list;
+}
+
+.listDark {
+  composes: list;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+}
+
+.emptyBase {
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 48px auto;
+}
+
+.emptyIcon {
+  font-size: 5rem;
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.emptyTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.emptyText {
+  font-size: 1.15rem;
+  opacity: 0.85;
+  margin: 0;
+  max-width: 85%;
+  line-height: 1.6;
+}
+
+.emptyLight {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  color: #495057;
+  border: 1px dashed #ced4da;
+}
+
+.emptyDark {
+  composes: emptyBase;
+  background: linear-gradient(145deg, #1e1e1e, #171717);
+  color: #cbd5e1;
+  border: 1px dashed #3a3a3a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.emptyLight .emptyTitle {
+  color: #2d3748;
+}
+
+.emptyLight .emptyText {
+  color: #6c757d;
+}
+
+.emptyDark .emptyTitle {
+  color: #f1f5f9;
+}
+
+.emptyDark .emptyText {
+  color: #a0aec0;
+}

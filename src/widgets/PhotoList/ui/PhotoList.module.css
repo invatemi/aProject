@@ -1,0 +1,39 @@
+.item{
+  width: fit-content;
+  height: fit-content;
+  list-style: none;
+}
+
+.album-photos-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 24px 0 32px;
+  text-align: center;
+  color: #1e293b;
+}
+
+.dark .page-title {
+  color: #f1f5f9;
+}
+
+.listDark{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.listLight{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}

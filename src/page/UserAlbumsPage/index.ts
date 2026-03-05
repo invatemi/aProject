@@ -1,0 +1,1 @@
+export {default as UserAlbumsPage} from "./UserAlbumsPage"
